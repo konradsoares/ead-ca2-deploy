@@ -1,35 +1,27 @@
-version: '3.8'
-
 services:
+  backend:
+    image: recipe-backend:latest
+    build: ../ead-ca2-BE
+    ports:
+      - "9090:9090"
+    networks:
+      - ca2-network
+
+  frontend:
+    image: recipe-frontend:latest
+    build: ../ead-ca2-FE
+    ports:
+      - "80:22137"
+    networks:
+      - ca2-network
+
   mongo:
     image: mongo
     ports:
       - "27017:27017"
     networks:
-      - recipe-net
-
-  backend:
-    image: recipe-backend:latest
-    build:
-      context: ../ead-ca2-BE
-    ports:
-      - "9090:9090"
-    depends_on:
-      - mongo
-    networks:
-      - recipe-net
-
-  frontend:
-    image: recipe-frontend:latest
-    build:
-      context: ../ead-ca2-FE
-    ports:
-      - "80:22137"
-    depends_on:
-      - backend
-    networks:
-      - recipe-net
+      - ca2-network
 
 networks:
-  recipe-net:
+  ca2-network:
     driver: bridge
