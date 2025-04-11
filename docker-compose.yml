@@ -10,7 +10,8 @@ services:
       test: ["CMD", "wget", "--spider", "-q", "http://localhost:9090"]
       interval: 10s
       timeout: 5s
-      retries: 5
+      retries: 3
+
   frontend:
     image: recipe-frontend:latest
     build: ../ead-ca2-FE
