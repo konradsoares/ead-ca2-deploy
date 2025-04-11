@@ -3,7 +3,7 @@ services:
     image: recipe-backend:latest
     build: ../ead-ca2-BE
     ports:
-      - "9090:9090"
+      - "9090:8080"
     networks:
       - ca2-network
     healthcheck:
