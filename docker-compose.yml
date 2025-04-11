@@ -6,6 +6,11 @@ services:
       - "9090:9090"
     networks:
       - ca2-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9090"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   frontend:
     image: recipe-frontend:latest
@@ -14,6 +19,9 @@ services:
       - "80:22137"
     networks:
       - ca2-network
+    depends_on:
+      backend:
+        condition: service_healthy
 
   mongo:
     image: mongo
