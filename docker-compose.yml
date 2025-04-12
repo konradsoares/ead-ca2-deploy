@@ -3,9 +3,9 @@ services:
     image: prom/prometheus
     container_name: prometheus
     volumes:
-      - ./monitoring/prometheus/prometheus.yml:/etc/prometheus.yml
+      - ./monitoring/prometheus/prometheus.yml:/etc/prometheus-custom.yml
     command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--config.file=/etc/prometheus-custom.yml'
     ports:
       - "9092:9090"
     networks:
