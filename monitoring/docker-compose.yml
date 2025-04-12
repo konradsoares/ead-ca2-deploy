@@ -11,7 +11,10 @@ services:
     ports:
       - "9092:9090"
     networks:
-      - ca2-network
+      ca2-network:
+        aliases:
+          - backend
+          - frontend
 
   grafana:
     image: grafana/grafana
