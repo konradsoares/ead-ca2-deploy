@@ -40,4 +40,4 @@ services:
 
 networks:
   ca2-network:
-    external: true
+    # external: true
