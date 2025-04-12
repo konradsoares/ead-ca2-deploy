@@ -7,6 +7,8 @@ services:
       - "9090:9090"
     networks:
       - ca2-network
+          aliases:
+            - backend
     healthcheck:
       test: ["CMD", "wget", "--spider", "-q", "http://localhost:9090"]
       interval: 10s
@@ -21,6 +23,8 @@ services:
       - "80:22137"
     networks:
       - ca2-network
+          aliases:
+            - frontend      
     depends_on:
       backend:
         condition: service_healthy
