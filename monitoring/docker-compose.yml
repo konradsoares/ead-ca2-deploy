@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - "9092:9090"
+    networks:
+      - ca2-network
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - ca2-network
+    depends_on:
+      - prometheus
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+
+  mongodb-exporter:
+    image: bitnami/mongodb-exporter:latest
+    container_name: mongodb-exporter
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017
+    ports:
+      - "9216:9216"
+    networks:
+      - ca2-network
+
+networks:
+  ca2-network:
+    external: true
