@@ -1,0 +1,13 @@
+services:
+  mongodb-exporter:
+    image: percona/mongodb_exporter:0.40.0
+    container_name: mongodb-exporter
+    environment:
+      - MONGODB_URI=mongodb://prometheus:prometheuspass@mongo:27017/admin?authSource=admin
+    ports:
+      - "9216:9216"
+    networks:
+      - ca2-network
+networks:
+  ca2-network:
+    driver: bridge

@@ -22,16 +22,6 @@ services:
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
-
-  mongodb-exporter:
-    image: bitnami/mongodb-exporter:latest
-    container_name: mongodb-exporter
-    environment:
-      - MONGODB_URI=mongodb://mongo:27017
-    ports:
-      - "9216:9216"
-    networks:
-      - ca2-network
 networks:
   ca2-network:
     driver: bridge
