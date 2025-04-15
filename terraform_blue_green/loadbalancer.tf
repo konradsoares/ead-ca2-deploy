@@ -1,10 +1,3 @@
-
-locals {
-  blue_droplet_id  = 489128393
-  green_droplet_id = 489128482
-  active_droplet   = var.active_deployment == "blue" ? local.blue_droplet_id : local.green_droplet_id
-}
-
 resource "digitalocean_loadbalancer" "www-lb" {
   name   = "www-lb"
   region = "ams3"
@@ -21,5 +14,5 @@ resource "digitalocean_loadbalancer" "www-lb" {
     protocol = "tcp"
   }
 
-  droplet_ids = [local.active_droplet]
+  droplet_ids = [var.active_droplet_id]
 }
