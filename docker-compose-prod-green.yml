@@ -12,6 +12,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 3
+    env_file:
+      - .env.prodG
   frontend:
     container_name: frontend
     image: recipe-frontend:latest
@@ -23,6 +25,8 @@ services:
     depends_on:
       backend:
         condition: service_healthy
+    env_file:
+      - .env.prodG
 networks:
   ca2-network:
     driver: bridge
