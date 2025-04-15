@@ -1,6 +1,13 @@
-resource "digitalocean_loadbalancer" "www-lb" {
-  name   = "www-lb"
-  region = "ams3"
+# Lookup existing load balancer by name
+data "digitalocean_loadbalancer" "existing" {
+  name = "www-lb"
+}
+
+# Update it with new droplet
+resource "digitalocean_loadbalancer" "update_lb" {
+  provider = digitalocean
+  name     = data.digitalocean_loadbalancer.existing.name
+  region   = data.digitalocean_loadbalancer.existing.region
 
   forwarding_rule {
     entry_port     = 80
@@ -15,4 +22,8 @@ resource "digitalocean_loadbalancer" "www-lb" {
   }
 
   droplet_ids = [var.active_droplet_id]
+
+  lifecycle {
+    ignore_changes = [name, region, forwarding_rule, healthcheck]
+  }
 }
