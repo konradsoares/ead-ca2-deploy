@@ -1,0 +1,7 @@
+FROM node:18-alpine
+WORKDIR /app
+COPY package.json ./
+COPY sidecar-health.js ./
+RUN npm install
+EXPOSE 8080
+CMD ["node", "sidecar-health.js"]
