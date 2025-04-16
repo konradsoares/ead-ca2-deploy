@@ -18,7 +18,7 @@ resource "digitalocean_loadbalancer" "www_lb" {
 
   healthcheck {
     protocol = "http"
-    port     = 80
+    port     = 8080
     path     = "/health-${local.active_node}"
   }
 }
