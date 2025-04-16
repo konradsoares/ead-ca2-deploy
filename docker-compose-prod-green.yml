@@ -29,7 +29,7 @@ services:
       - .env.prodG
   sidecar:
     build:
-      context: ./sidecar
+      context: .
       dockerfile: Dockerfile.sidecar
     container_name: sidecar
     environment:
