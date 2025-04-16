@@ -27,6 +27,17 @@ services:
         condition: service_healthy
     env_file:
       - .env.prodB
+  sidecar:
+    build:
+      context: .
+      dockerfile: Dockerfile.sidecar
+    container_name: sidecar
+    environment:
+      - ACTIVE_NODE=blue
+    ports:
+      - "8080:8080"
+    networks:
+      - ca2-network    
 networks:
   ca2-network:
     driver: bridge
