@@ -1,5 +1,5 @@
 locals {
-  raw_node    = trim(file("${path.module}/.env"))
+  raw_node    = trim(file("${path.module}/.env"), "\n")
   active_node = contains(["ACTIVE_NODE=blue", "ACTIVE_NODE=green"], local.raw_node) ? replace(local.raw_node, "ACTIVE_NODE=", "") : "blue"
 }
 
