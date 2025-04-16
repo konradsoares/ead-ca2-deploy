@@ -1,8 +1,3 @@
-# Lookup existing load balancer by name
-data "digitalocean_loadbalancer" "existing_lb" {
-  name = "www-lb"
-}
-
 # Update it with new droplet
 resource "digitalocean_loadbalancer" "update_lb" {
   provider = digitalocean
