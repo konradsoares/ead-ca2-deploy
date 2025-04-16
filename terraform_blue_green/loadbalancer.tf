@@ -1,3 +1,12 @@
+variable "active_droplet_id" {
+  description = "The droplet ID to be attached to the load balancer"
+  type        = string
+}
+
+locals {
+  updated_droplets = [var.active_droplet_id]
+}
+
 resource "digitalocean_loadbalancer" "www_lb" {
   name   = "www-lb"
   region = "ams3"
@@ -14,5 +23,5 @@ resource "digitalocean_loadbalancer" "www_lb" {
     protocol = "tcp"
   }
 
-  droplet_ids = [var.active_droplet_id]
+  droplet_ids = local.updated_droplets
 }
