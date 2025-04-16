@@ -1,5 +1,7 @@
 locals {
-  active_node = trim(file("${path.module}/.env")) == "ACTIVE_NODE=blue" ? "blue" : "green"
+  raw_node = trim(file("${path.module}/.env"))
+  active_node = contains(["ACTIVE_NODE=blue", "ACTIVE_NODE=green"], local.raw_node) ? 
+                replace(local.raw_node, "ACTIVE_NODE=", "") : "blue"
 }
 
 resource "digitalocean_loadbalancer" "www_lb" {
