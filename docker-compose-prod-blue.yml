@@ -28,8 +28,8 @@ services:
     env_file:
       - .env.prodB
   sidecar:
-    build: ./sidecar
-      context: .
+    build:
+      context: ./sidecar
       dockerfile: Dockerfile.sidecar
     container_name: sidecar
     environment:
@@ -39,7 +39,7 @@ services:
     env_file:
       - ./terraform_blue_green/.env
     networks:
-      - ca2-network    
+      - ca2-network
 networks:
   ca2-network:
     driver: bridge
