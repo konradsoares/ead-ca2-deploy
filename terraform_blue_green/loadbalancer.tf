@@ -1,4 +1,3 @@
-variable "do_token" {}
 locals {
   active_node = trim(file("${path.module}/.env")) == "ACTIVE_NODE=blue" ? "blue" : "green"
 }
