@@ -1,8 +1,3 @@
-variable "active_droplet_id" {
-  description = "The droplet ID to be attached to the load balancer"
-  type        = string
-}
-
 locals {
   updated_droplets = [var.active_droplet_id]
 }
