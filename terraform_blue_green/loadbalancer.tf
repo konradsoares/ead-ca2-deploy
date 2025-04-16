@@ -1,5 +1,5 @@
 # Lookup existing load balancer by name
-data "digitalocean_loadbalancer" "existing" {
+data "digitalocean_loadbalancer" "existing_lb" {
   name = "www-lb"
 }
 
