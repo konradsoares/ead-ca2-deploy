@@ -28,7 +28,7 @@ services:
     env_file:
       - .env.prodB
   sidecar:
-    build:
+    build: ./sidecar
       context: .
       dockerfile: Dockerfile.sidecar
     container_name: sidecar
@@ -36,6 +36,8 @@ services:
       - ACTIVE_NODE=blue
     ports:
       - "8080:8080"
+    env_file:
+      - ./terraform_blue_green/.env
     networks:
       - ca2-network    
 networks:
