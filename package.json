@@ -1,0 +1,8 @@
+{
+  "name": "sidecar-health",
+  "version": "1.0.0",
+  "main": "sidecar-health.js",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
