@@ -1,26 +1,24 @@
 variable "do_token" {}
-variable "active_droplet_id" {}
-variable "inactive_droplet_id" {}
-
-provider "digitalocean" {
-  token = var.do_token
+locals {
+  active_node = trim(file("${path.module}/.env")) == "ACTIVE_NODE=blue" ? "blue" : "green"
 }
 
 resource "digitalocean_loadbalancer" "www_lb" {
   name   = "www-lb"
   region = "ams3"
-
-  droplet_ids = [var.active_droplet_id, var.inactive_droplet_id]
+  droplet_ids = ["489128393", "489128482"] # Both always attached
 
   forwarding_rule {
     entry_port     = 80
     entry_protocol = "http"
     target_port    = 80
     target_protocol = "http"
+    # Traffic will be routed by health checks or tags
   }
 
   healthcheck {
-    port     = 9090 # Only the active node should respond to this
-    protocol = "tcp"
+    protocol = "http"
+    port     = 80
+    path     = "/health-${local.active_node}"
   }
 }
