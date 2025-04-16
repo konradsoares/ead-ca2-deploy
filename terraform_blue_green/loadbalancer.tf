@@ -1,10 +1,11 @@
-locals {
-  updated_droplets = [var.active_droplet_id]
-}
-
 resource "digitalocean_loadbalancer" "www_lb" {
   name   = "www-lb"
   region = "ams3"
+
+  droplet_ids = [
+    var.blue_droplet_id,
+    var.green_droplet_id
+  ]
 
   forwarding_rule {
     entry_port     = 80
@@ -14,9 +15,7 @@ resource "digitalocean_loadbalancer" "www_lb" {
   }
 
   healthcheck {
-    port     = 22
+    port     = var.target_env == "blue" ? 80 : 81
     protocol = "tcp"
   }
-
-  droplet_ids = local.updated_droplets
 }
