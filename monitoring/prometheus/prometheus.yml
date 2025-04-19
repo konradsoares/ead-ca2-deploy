@@ -13,7 +13,3 @@ scrape_configs:
   - job_name: 'mongodb'
     static_configs:
       - targets: ['164.92.223.245:9216']
-
-  - job_name: 'sidecar-health'
-    static_configs:
-      - targets: ['188.166.18.67:8088', '167.172.45.92:8088']
