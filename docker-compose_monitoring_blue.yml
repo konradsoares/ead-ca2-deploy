@@ -27,19 +27,6 @@ services:
       - ca2-network
     restart: unless-stopped
 
-  sidecar-health:
-    image: node:18
-    container_name: sidecar-blue-health
-    working_dir: /app
-    volumes:
-      - /opt/ead-ca2-deploy/sidecar:/app
-    command: node sidecar-health.js
-    ports:
-      - "8088:8080"
-    networks:
-      - ca2-network
-    restart: unless-stopped
-
 networks:
   ca2-network:
     external: true
