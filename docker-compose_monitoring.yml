@@ -6,7 +6,7 @@ services:
     container_name: alertmanager
     restart: unless-stopped
     volumes:
-      - ./monitoring/prometheus/alert-manager/alertmanager.yml:/etc/alertmanager/alertmanager.yml
+      - /opt/ead-ca2-deploy/monitoring/prometheus/alert-manager/alertmanager.yml:/etc/alertmanager/alertmanager.yml
     ports:
       - "9093:9093"
     networks:
