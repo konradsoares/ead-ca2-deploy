@@ -16,4 +16,4 @@ scrape_configs:
 
   - job_name: 'sidecar-health'
     static_configs:
-      - targets: ['188.166.18.67:8080', '167.172.45.92:8080']
+      - targets: ['188.166.18.67:8088', '167.172.45.92:8088']
