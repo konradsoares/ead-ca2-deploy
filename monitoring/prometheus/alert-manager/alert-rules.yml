@@ -1,11 +1,11 @@
 groups:
-  - name: InstanceDown
+  - name: Frontend_Health
     rules:
-      - alert: InstanceDown
-        expr: up == 0
+      - alert: FrontendDown
+        expr: probe_success == 0
         for: 1m
         labels:
           severity: critical
         annotations:
-          summary: "Instance {{ $labels.instance }} is down"
-          description: "Target {{ $labels.instance }} (job: {{ $labels.job }}) has been down for more than 1 minute."
+          summary: "Frontend down on {{ $labels.instance }}"
+          description: "Health check failed for {{ $labels.instance }}"
