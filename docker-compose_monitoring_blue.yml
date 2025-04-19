@@ -33,7 +33,7 @@ services:
     working_dir: /usr/src/app
     volumes:
       - /opt/ead-ca2-deploy/sidecar:/usr/src/app
-    command: node health-server.js
+    command: node sidecar-health.js
     ports:
       - "8088:8080"
     networks:
