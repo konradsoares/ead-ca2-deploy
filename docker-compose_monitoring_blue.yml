@@ -3,6 +3,8 @@ services:
   backend-exporter:
     image: prom/prometheus
     container_name: backend-blue-exporter
+    volumes:
+      - /opt/ead-ca2-deploy/monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml    
     command:
       - '--web.listen-address=:8081'
     ports:
