@@ -20,6 +20,7 @@ services:
     build: ../ead-ca2-FE
     ports:
       - "80:22137"
+    restart: unless-stopped
     networks:
       - ca2-network
     depends_on:
