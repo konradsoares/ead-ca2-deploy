@@ -1,0 +1,39 @@
+version: '3'
+services:
+  backend-exporter:
+    image: prom/prometheus
+    container_name: backend-green-exporter
+    command:
+      - '--web.listen-address=:8081'
+    ports:
+      - "8081:8081"
+    networks:
+      - ca2-network
+
+  frontend-exporter:
+    image: node:18
+    container_name: frontend-green-exporter
+    working_dir: /usr/src/app
+    volumes:
+      - ./frontend:/usr/src/app
+    command: node metrics-server.js
+    ports:
+      - "22138:22138"
+    networks:
+      - ca2-network
+
+  sidecar-health:
+    image: node:18
+    container_name: sidecar-green-health
+    working_dir: /usr/src/app
+    volumes:
+      - ./sidecar:/usr/src/app
+    command: node health-server.js
+    ports:
+      - "8080:8080"
+    networks:
+      - ca2-network
+
+networks:
+  ca2-network:
+    external: true
