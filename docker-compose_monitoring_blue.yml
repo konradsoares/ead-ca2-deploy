@@ -19,8 +19,8 @@ services:
     container_name: frontend-blue-exporter
     working_dir: /usr/src/app
     volumes:
-      - /opt/ead-ca2-deploy/frontend:/usr/src/app
-    command: node metrics-server.js
+      - /opt/ead-ca2-FE:/usr/src/app
+    command: node fe-server.js
     ports:
       - "22138:22138"
     networks:
