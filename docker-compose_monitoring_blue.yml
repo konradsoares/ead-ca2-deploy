@@ -17,9 +17,9 @@ services:
   frontend-exporter:
     image: node:18
     container_name: frontend-blue-exporter
-    working_dir: ./
+    working_dir: /usr/src/app
     volumes:
-      - /opt/ead-ca2-FE:./
+      - /opt/ead-ca2-FE:/usr/src/app
     command: node fe-server.js
     ports:
       - "22138:22138"
