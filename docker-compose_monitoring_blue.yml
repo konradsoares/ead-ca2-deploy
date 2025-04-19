@@ -4,37 +4,41 @@ services:
     image: prom/prometheus
     container_name: backend-blue-exporter
     volumes:
-      - /opt/ead-ca2-deploy/monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml    
+      - /opt/ead-ca2-deploy/monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
       - '--web.listen-address=:8081'
     ports:
       - "8081:8081"
     networks:
       - ca2-network
+    restart: unless-stopped
 
   frontend-exporter:
     image: node:18
     container_name: frontend-blue-exporter
     working_dir: /usr/src/app
     volumes:
-      - ./frontend:/usr/src/app
+      - /opt/ead-ca2-deploy/frontend:/usr/src/app
     command: node metrics-server.js
     ports:
       - "22138:22138"
     networks:
       - ca2-network
+    restart: unless-stopped
 
   sidecar-health:
     image: node:18
     container_name: sidecar-blue-health
     working_dir: /usr/src/app
     volumes:
-      - ./sidecar:/usr/src/app
+      - /opt/ead-ca2-deploy/sidecar:/usr/src/app
     command: node health-server.js
     ports:
       - "8088:8080"
     networks:
       - ca2-network
+    restart: unless-stopped
 
 networks:
   ca2-network:
