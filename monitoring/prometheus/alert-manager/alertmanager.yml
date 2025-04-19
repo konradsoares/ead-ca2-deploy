@@ -11,5 +11,5 @@ receivers:
   - name: 'telegram-bot'
     telegram_configs:
       - bot_token: 'bot7564247697:AAFsBEa7p6pQi_OSu6HBb-WuQTbIXI0Ytps'
-        chat_id: '1278083505'
+        chat_id: 1278083505
         parse_mode: 'HTML'
