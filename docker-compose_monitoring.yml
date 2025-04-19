@@ -10,7 +10,13 @@ services:
       - "9092:9090"
     networks:
       - ca2-network
-
+  mongo-exporter:
+    image: percona/mongodb_exporter:0.39
+    container_name: mongo-exporter
+    environment:
+      MONGODB_URI: "mongodb://mongo:27017"
+    networks:
+      - ca2-network
   grafana:
     image: grafana/grafana
     ports:
