@@ -4,11 +4,11 @@ global:
 scrape_configs:
   - job_name: 'frontend'
     static_configs:
-      - targets: ['frontend-blue:22138', 'frontend-green:22138']
+      - targets: ['188.166.18.67:22138', '167.172.45.92:22138']
 
   - job_name: 'backend'
     static_configs:
-      - targets: ['backend-blue:8081', 'backend-green:8081']
+      - targets: ['188.166.18.67:8081', '167.172.45.92:8081']
 
   - job_name: 'mongodb'
     static_configs:
@@ -16,4 +16,4 @@ scrape_configs:
 
   - job_name: 'sidecar-health'
     static_configs:
-      - targets: ['sidecar-blue:8080', 'sidecar-green:8080']
+      - targets: ['188.166.18.67:8080', '167.172.45.92:8080']
