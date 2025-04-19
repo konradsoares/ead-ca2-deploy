@@ -12,7 +12,7 @@ scrape_configs:
 
   - job_name: 'mongodb'
     static_configs:
-      - targets: ['mongo-exporter:9216']
+      - targets: ['164.92.223.245:9216']
 
   - job_name: 'sidecar-health'
     static_configs:
