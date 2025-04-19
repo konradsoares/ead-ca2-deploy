@@ -30,9 +30,9 @@ services:
   sidecar-health:
     image: node:18
     container_name: sidecar-blue-health
-    working_dir: /usr/src/app
+    working_dir: /app
     volumes:
-      - /opt/ead-ca2-deploy/sidecar:/usr/src/app
+      - /opt/ead-ca2-deploy/sidecar:/app
     command: node sidecar-health.js
     ports:
       - "8088:8080"
