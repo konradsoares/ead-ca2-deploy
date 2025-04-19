@@ -26,7 +26,14 @@ services:
       - "9092:9090"
     networks:
       - ca2-network
-
+  blackbox-exporter:
+    image: prom/blackbox-exporter
+    container_name: blackbox-exporter
+    restart: unless-stopped
+    ports:
+      - "9115:9115"
+    networks:
+      - ca2-network
 networks:
   ca2-network:
     driver: bridge
