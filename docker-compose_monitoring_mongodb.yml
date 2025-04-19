@@ -1,0 +1,15 @@
+version: '3'
+services:
+  mongodb-exporter:
+    image: percona/mongodb_exporter:0.40.0
+    container_name: mongodb-exporter
+    environment:
+      MONGODB_URI: "mongodb://mongo:27017"
+    ports:
+      - "9216:9216"
+    networks:
+      - ca2-network
+
+networks:
+  ca2-network:
+    driver: bridge
