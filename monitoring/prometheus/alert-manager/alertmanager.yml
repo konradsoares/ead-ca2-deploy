@@ -13,9 +13,10 @@ receivers:
       - api_url: 'https://api.telegram.org'
         bot_token: '7564247697:AAFsBEa7p6pQi_OSu6HBb-WuQTbIXI0Ytps'
         chat_id: 1278083505
-        parse_mode: 'HTML'
+        parse_mode: ''  # Disable formatting if you want to be safe
         message: |
-          🔔 <b>{{ .CommonLabels.alertname }}</b>
-          Instance: {{ .CommonLabels.instance }}
-          ❌ {{ .CommonAnnotations.description }}
-          🕓 <i>{{ .StartsAt }}</i>
+          🚨 Alert: {{ .CommonLabels.alertname }}
+          🔍 Instance: {{ .CommonLabels.instance }}
+          📦 Job: {{ .CommonLabels.job }}
+          🕒 Started at: {{ .StartsAt }}
+          ⚠️ Status: {{ .Status }}
