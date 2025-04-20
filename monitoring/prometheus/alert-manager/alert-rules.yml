@@ -2,7 +2,7 @@ groups:
   - name: BlackboxAlerts
     rules:
       - alert: FrontendHealthDown
-        expr: probe_success == 0
+        expr: probe_http_status_code == 0
         for: 1m
         labels:
           severity: critical
