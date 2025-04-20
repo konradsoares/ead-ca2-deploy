@@ -10,10 +10,11 @@ route:
 receivers:
   - name: 'telegram'
     telegram_configs:
-      - bot_token: 'bot7564247697:AAFsBEa7p6pQi_OSu6HBb-WuQTbIXI0Ytps'
+      - bot_token: '7564247697:AAFsBEa7p6pQi_OSu6HBb-WuQTbIXI0Ytps'
         chat_id: 1278083505
+        parse_mode: HTML
         message: |
-          🔴 Alert: {{ .CommonLabels.alertname }}
-          ▶️ Instance: {{ .CommonLabels.instance }}
-          💣 Description: {{ .CommonAnnotations.description }}
-          🕒 Time: {{ .StartsAt }}
+          🔔 <b>{{ .CommonLabels.alertname }}</b>
+          Instance: {{ .CommonLabels.instance }}
+          ❌ {{ .CommonAnnotations.description }}
+          🕓 <i>{{ .StartsAt }}</i>
