@@ -2,10 +2,10 @@ groups:
   - name: BlackboxAlerts
     rules:
       - alert: FrontendHealthDown
-        expr: probe_http_status_code == 0
+        expr: probe_success{job="blackbox-http"} == 0
         for: 1m
         labels:
           severity: critical
         annotations:
           summary: "Frontend healthcheck failed"
-          description: "The frontend at {{ $labels.instance }} is down (blackbox probe failed)."
+          description: "The frontend at {{ $labels.instance }} is DOWN (probe failed)."
