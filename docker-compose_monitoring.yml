@@ -32,6 +32,8 @@ services:
     restart: unless-stopped
     ports:
       - "9115:9115"
+    volumes:
+      - /opt/ead-ca2-deploy/monitoring/prometheus/blackbox.yml:/etc/blackbox_exporter/config.yml
     networks:
       - ca2-network
 networks:
