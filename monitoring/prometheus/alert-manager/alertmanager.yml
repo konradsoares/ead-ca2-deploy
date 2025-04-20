@@ -14,7 +14,7 @@ receivers:
         bot_token: '7564247697:AAFsBEa7p6pQi_OSu6HBb-WuQTbIXI0Ytps'
         chat_id: 1278083505
         send_resolved: true
-        parse_mode: MarkdownV2
+        parse_mode: ''
         message: >
           {{ if eq .Status "firing" -}}
           🔴 *ALERT*: {{ .CommonLabels.alertname }}
