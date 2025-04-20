@@ -18,7 +18,7 @@ services:
     restart: unless-stopped
     volumes:
       - /opt/ead-ca2-deploy/monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-      - /opt/ead-ca2-deploy/monitoring/prometheus/alert-manager/alert_rules.yml:/etc/prometheus/alert_rules.yml
+      - /opt/ead-ca2-deploy/monitoring/prometheus/alert-manager/alert-rules.yml:/etc/prometheus/alert-rules.yml
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--web.enable-lifecycle'
