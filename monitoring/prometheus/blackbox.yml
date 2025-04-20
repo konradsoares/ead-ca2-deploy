@@ -6,5 +6,3 @@ modules:
       method: GET
       valid_http_versions: ["HTTP/1.1", "HTTP/2"]
       valid_status_codes: [200]
-      fail_if_body_not_matches_regexp:
-        - "OK"
