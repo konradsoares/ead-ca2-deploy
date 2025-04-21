@@ -1,11 +1,11 @@
 global:
-  resolve_timeout: 5m
+  resolve_timeout: 30s
 
 route:
   receiver: 'telegram'
   group_wait: 10s
   group_interval: 30s
-  repeat_interval: 1h
+  repeat_interval: 60s
 
 receivers:
   - name: 'telegram'
